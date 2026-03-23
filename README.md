@@ -1,5 +1,5 @@
 # LAB3-Instrumentacion
-Cálculo ambulatorio del índice pletismográfico quirúrgico (SPI)
+# Cálculo ambulatorio del índice pletismográfico quirúrgico (SPI)
 
 
 # Fotopletismografía (PPG) y Cálculo del SPI
@@ -22,6 +22,43 @@ El análisis se realiza bajo condiciones de reposo y durante la aplicación del 
 - Calcular el índice SPI
 - Analizar cambios fisiológicos durante el CPT
 - Documentar el proceso en GitHub
+
+---
+##  Marco Teórico
+
+###  Fotopletismografía (PPG)
+
+La fotopletismografía (PPG) es una técnica óptica no invasiva utilizada para medir las variaciones del volumen sanguíneo en los tejidos periféricos. Se basa en la emisión de luz hacia la piel y la detección de la luz reflejada o transmitida, la cual varía en función de los cambios pulsátiles del flujo sanguíneo asociados al ciclo cardíaco.
+
+La señal PPG está compuesta por dos componentes principales:
+
+- **Componente DC:** asociada a tejidos, sangre no pulsátil y absorción constante.
+- **Componente AC:** relacionada con la variación pulsátil del volumen sanguíneo.
+
+Esta técnica es ampliamente utilizada en dispositivos biomédicos como oxímetros de pulso y sistemas de monitoreo cardiovascular.
+
+---
+
+###  Índice Pletismográfico Quirúrgico (SPI)
+
+El Índice Pletismográfico Quirúrgico (SPI) es un parámetro derivado de la señal PPG que permite evaluar el equilibrio entre la actividad del sistema nervioso simpático y parasimpático, siendo especialmente útil en entornos clínicos para monitorear el nivel de estrés o nocicepción en pacientes.
+
+El SPI se basa en la relación entre la amplitud pulsátil (componente AC) y el nivel basal de la señal (componente DC), lo que permite inferir cambios en la vasoconstricción periférica. Durante estados de activación simpática, como el dolor o el estrés, se produce una disminución en la amplitud de la señal PPG debido a la vasoconstricción.
+
+---
+
+###  Cold Pressor Test (CPT)
+
+El Cold Pressor Test (CPT) es una prueba fisiológica utilizada para evaluar la respuesta del sistema nervioso autónomo ante un estímulo de estrés. Consiste en la inmersión de una extremidad (generalmente la mano) en agua fría (0–5 °C) durante un tiempo determinado.
+
+Esta prueba induce:
+
+- Activación del sistema nervioso simpático
+- Incremento de la presión arterial
+- Vasoconstricción periférica
+- Cambios en señales fisiológicas como la PPG
+
+El CPT es ampliamente utilizado en investigación cardiovascular y estudios de regulación autonómica.
 
 ---
 
@@ -74,6 +111,34 @@ Donde:
 
 ---
 
-## 📈 Resultados
+##  Resultados
 
 ###  Señal PPG (Original vs Filtrada)
+
+## • 1. Compare los valores del SPI obtenidos durante la práctica con
+los que frecuentemente se observan durante una cirugía para proporcionar
+el nivel óptimo de anestesia.
+## • 2. Evalúe el alcance y las posibles limitaciones de emplear el
+sistema desarrollado para cuantificar el dolor que percibe una persona.
+
+
+## Conclusiones
+
+• ¿Cómo se relacionan las variaciones del volumen sanguíneo
+periférico con el balance autonómico?
+• ¿Cómo se compara el SPI con otros índices comúnmente
+empleados en cirugía, como el índice nocicepción-analgesia (ANI) y el
+índice de perfusión?
+
+
+## Referencias
+
+[1] J. Allen, “Photoplethysmography and its application in clinical physiological measurement,” *Physiological Measurement*, vol. 28, no. 3, pp. R1–R39, 2007.
+
+[2] M. Huiku et al., “Assessment of surgical stress during general anaesthesia,” *British Journal of Anaesthesia*, vol. 98, no. 4, pp. 447–455, 2007.
+
+[3] Y. C. Fung, *Biomechanics: Circulation*, 2nd ed. New York, NY, USA: Springer, 1997.
+
+[4] W. Verkruysse, L. O. Svaasand, and J. S. Nelson, “Remote plethysmographic imaging using ambient light,” *Optics Express*, vol. 16, no. 26, pp. 21434–21445, 2008.
+
+[5] V. Jambrik et al., “Usefulness of the cold pressor test in cardiovascular research,” *Heart*, vol. 90, no. 7, pp. 727–728, 2004.
