@@ -62,7 +62,7 @@ El CPT es ampliamente utilizado en investigación cardiovascular y estudios de r
 
 ---
 
-## ⚙️ Metodología
+##  Metodología
 
 ###  Adquisición de señal
 
@@ -72,7 +72,23 @@ El CPT es ampliamente utilizado en investigación cardiovascular y estudios de r
 - Circuito
   <img width="570" height="306" alt="image" src="https://github.com/user-attachments/assets/9a62d22b-2cbc-48d0-b756-7e689326cc5a" />
 
+```matlab
+puerto = "COM3";
+arduino = serialport(puerto, 9600);
 
+tiempo_total = 120;
+fs = 50;
+dt = 1/fs;
+N = tiempo_total * fs;
+
+senal = zeros(1, N);
+
+for i = 1:N
+    dato = readline(arduino);
+    senal(i) = str2double(dato);
+    pause(dt);
+end
+```
 ---
 
 ###  Procesamiento de señal en MATLAB
@@ -83,10 +99,20 @@ El CPT es ampliamente utilizado en investigación cardiovascular y estudios de r
 
 2. **Filtrado**
    - Filtro pasa banda: 0.5 – 5 Hz
+  
+```matlab
+senal_filtrada = bandpass(senal, [0.5 5], fs);
+```
 
 3. **Detección de latidos**
    - Algoritmo `findpeaks`
    - Identificación de picos y valles
+
+```matlab
+[pks, locs] = findpeaks(senal_filtrada, ...
+    'MinPeakDistance', round(0.5*fs), ...
+    'MinPeakHeight', mean(senal_filtrada));
+```
 
 4. **Cálculo del SPI**
 
@@ -98,7 +124,19 @@ Donde:
 
 - **AC**: amplitud del pulso (pico - valle)  
 - **DC**: valor medio de la señal  
+```matlab
+SPI = [];
 
+for i = 1:length(locs)-1
+    idx = locs(i):locs(i+1);
+    segmento = senal_filtrada(idx);
+
+    AC = max(segmento) - min(segmento);
+    DC = mean(segmento);
+
+    SPI = [SPI AC/DC];
+end
+```
 ---
 
 ###  Protocolo experimental (CPT)
@@ -108,6 +146,8 @@ Donde:
 | Reposo inicial  | 0 – 40 s    | Condición basal             |
 | CPT             | 40 – 80 s   | Estímulo frío               |
 | Recuperación    | 80 – 120 s  | Retorno a estado basal      |
+
+
 
 ---
 
