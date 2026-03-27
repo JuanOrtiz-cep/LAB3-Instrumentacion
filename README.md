@@ -85,7 +85,7 @@ De este modo utilizando un acoplador óptico modificado se pretendía convertir 
 
 Circuito resultante con el uso del MAX30102.
 
-## Código REVISAAAAAAAAAAAAAR
+## Código Matlab
 
 Se diseñó un código en MATLAB que captura la señal con el propósito de calcular el SPI de cada pulsación. Posteriormente se realiza la captura de 2 minutos mientras se utiliza la maniobra CPT. Paralelamente un integrante tomó los datos visualizados durante el uso de la maniobra.
 
