@@ -89,6 +89,163 @@ Circuito resultante con el uso del MAX30102.
 
 Se diseñó un código en MATLAB que captura la señal con el propósito de calcular el SPI de cada pulsación. Posteriormente se realiza la captura de 2 minutos mientras se utiliza la maniobra CPT. Paralelamente un integrante tomó los datos visualizados durante el uso de la maniobra.
 
+```matlab
+clear; clc; close all;
+
+%% CONFIGURACIÓN
+puerto = "COM3";
+baud = 115200;
+fs = 100;
+
+T = input("Ingrese tiempo de captura (segundos): ");
+window_sec = input("Ventana visible (segundos): ");
+
+window_samples = fs * window_sec;
+
+%% SERIAL
+s = serialport(puerto, baud);
+
+%% BUFFER
+max_samples = fs*T*2;
+data = zeros(max_samples,1);
+
+disp("Capturando señal...");
+
+%% FIGURAS
+figure('Position',[100 100 1000 600]);
+
+subplot(2,1,1)
+h_ppg = plot(nan,nan,'b','LineWidth',1.5); hold on;
+h_peaks = plot(nan,nan,'ro');
+h_valleys = plot(nan,nan,'go');
+title('PPG en tiempo real');
+xlabel('Tiempo (s)');
+ylabel('Amplitud');
+grid on;
+
+subplot(2,1,2)
+h_spi = plot(nan,nan,'LineWidth',2);
+title('SPI en tiempo real');
+xlabel('Tiempo (s)');
+ylabel('SPI');
+grid on;
+
+%% VARIABLES SPI
+SPI = [];
+t_spi = [];
+
+tic;
+i = 1;
+
+while toc < T
+    
+    val = str2double(readline(s));
+    
+    if isnan(val)
+        if i > 1
+            val = data(i-1);
+        else
+            val = 0;
+        end
+    end
+    
+    data(i) = val;
+    
+    %% PROCESAMIENTO EN VIVO
+    ppg = detrend(data(1:i));
+    ppg = movmean(ppg,8);
+    ppg = ppg - mean(ppg);
+    
+    if length(ppg) > fs*2
+        ppg2 = ppg(fs*2:end);
+    else
+        i = i + 1;
+        continue;
+    end
+    
+    time = (0:length(ppg2)-1)/fs;
+    
+    %% DETECCIÓN DE PICOS (MÉTODO ALPINISTA)
+    media = mean(ppg2);
+    sigma = std(ppg2);
+    
+    umbral = media + 0.8*sigma;
+    umbral_v = media - 0.8*sigma;
+    
+    peaks = [];
+    locs_p = [];
+    valleys = [];
+    locs_v = [];
+    
+    for k = 2:length(ppg2)-1
+        
+        if ppg2(k) > ppg2(k-1) && ppg2(k) > ppg2(k+1) && ppg2(k) > umbral
+            peaks(end+1) = ppg2(k);
+            locs_p(end+1) = k;
+        end
+        
+        if ppg2(k) < ppg2(k-1) && ppg2(k) < ppg2(k+1) && ppg2(k) < umbral_v
+            valleys(end+1) = ppg2(k);
+            locs_v(end+1) = k;
+        end
+    end
+    
+    %% SPI CORRECTO (ESCALADO FISIOLÓGICO)
+
+if length(locs_p) > 3 && length(locs_v) > 3
+    
+    % PPGA
+    n = min(length(peaks), length(valleys));
+    PPGA = peaks(1:n) - valleys(1:n);
+    
+    % HBI
+    HBI = diff(locs_p)/fs;
+    
+    m = min(length(PPGA)-1, length(HBI));
+    PPGA = PPGA(1:m);
+    HBI = HBI(1:m);
+    
+    %% NORMALIZACIÓN CORRECTA
+    
+    % PPGA (relativa)
+    PPGA_norm = PPGA / mean(PPGA);
+    
+    % HBI (escala fisiológica)
+    HBI_min = 0.6;   % latido rápido
+    HBI_max = 1.2;   % latido lento
+    
+    HBI_norm = (HBI - HBI_min) / (HBI_max - HBI_min);
+    
+    % limitar entre 0 y 1
+    HBI_norm = max(0, min(1, HBI_norm));
+    
+    % también limitar PPGA
+    PPGA_norm = max(0, min(2, PPGA_norm));
+    
+    %% SPI REAL
+    SPI = 100 - (0.33*PPGA_norm + 0.67*HBI_norm)*100;
+    
+    t_spi = locs_p(2:m+1)/fs;
+end
+    
+    %% ACTUALIZAR GRÁFICAS
+    
+    % PPG
+    set(h_ppg,'XData',time,'YData',ppg2);
+    set(h_peaks,'XData',locs_p/fs,'YData',peaks);
+    set(h_valleys,'XData',locs_v/fs,'YData',valleys);
+    
+    % SPI
+    set(h_spi,'XData',t_spi,'YData',SPI);
+    
+    drawnow;
+    
+    i = i + 1;
+end
+
+disp("Captura finalizada");
+```
+
 ###  Protocolo experimental (CPT)
 
 | Fase            | Tiempo        | Descripción                  |
