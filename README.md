@@ -264,6 +264,11 @@ disp("Captura finalizada");
 
 <img width="1245" height="846" alt="image" src="https://github.com/user-attachments/assets/a757823e-7142-44f3-bbf9-2bea30e055c6" />
 
+La señal fotopletismográfica (PPG) adquirida en tiempo real presenta un comportamiento periódico y bien definido, lo que indica una adecuada captura del pulso. Los picos sistólicos se identifican claramente a lo largo de la señal, permitiendo una detección confiable de los latidos cardíacos. Asimismo, los mínimos son consistentes, lo que sugiere que la señal no se encuentra saturada ni excesivamente afectada por ruido. Se observa una variabilidad moderada en la amplitud, la cual es esperable y puede estar asociada a cambios en la perfusión, ligeros movimientos del sensor o variaciones fisiológicas del sujeto. En general, la calidad de la señal es adecuada para el procesamiento, aunque se presentan pequeñas fluctuaciones que podrían reducirse mediante técnicas de filtrado.
+
+En cuanto al índice SPI, este se mantiene mayormente en un rango entre 60 y 75 durante el periodo de observación. De acuerdo con los valores de referencia, estos niveles sugieren una posible activación nociceptiva o un nivel bajo de analgesia. Se identifica una disminución puntual del índice hasta aproximadamente 47, la cual coincide con una irregularidad observada en la señal PPG, lo que sugiere que este comportamiento puede estar influenciado por un artefacto en la medición más que por un cambio fisiológico real. En general, el SPI muestra una tendencia relativamente estable, aunque sensible a perturbaciones en la señal de entrada.
+
+La relación entre la señal PPG y el índice SPI evidencia que la calidad de la señal influye directamente en el cálculo del índice, ya que cualquier anomalía o ruido puede generar variaciones abruptas en su valor. Por ello, aunque el sistema permite la adquisición y análisis en tiempo real de manera funcional, es recomendable implementar mejoras como filtrado de la señal, detección de artefactos y ajuste en la normalización de las variables utilizadas, con el fin de obtener resultados más robustos y clínicamente confiables.
 
 ###  Adquisición de señal
 
