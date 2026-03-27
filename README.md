@@ -265,7 +265,7 @@ disp("Captura finalizada");
 <img width="1245" height="846" alt="image" src="https://github.com/user-attachments/assets/a757823e-7142-44f3-bbf9-2bea30e055c6" />
 
 
-###  Adquisición de señal REVISAR
+###  Adquisición de señal
 
 - Sensor óptico de reflectancia (MAX30102)
 - ESP32 como sistema de adquisición
@@ -326,7 +326,7 @@ void loop() {
 
 1. **Captura de datos**
    - Duración: 120 segundos
-   - Frecuencia de muestreo: 50 Hz
+   - Frecuencia de muestreo: 100 Hz
 
 2. **Filtrado**
    - Filtro pasa banda: 0.5 – 5 Hz
@@ -336,13 +336,33 @@ senal_filtrada = bandpass(senal, [0.5 5], fs);
 ```
 
 3. **Detección de latidos**
-   - Algoritmo `findpeaks`
-   - Identificación de picos y valles
+
+- Acá usamos como referencia el método del alpinista, algo simplificado pero nos identifica de manera correcta todos los picos y valles, tammbien se tiene en cuenta que a veces error de ruido o de alguna interferencia (mala posición del dedo, hablar, movimiento brusco), hace que nuestra grafica cambie y por ende el valor del SPI, por lo cual recalcamos y enfatizamos la buena toma de la señal fisiologica.
 
 ```matlab
-[pks, locs] = findpeaks(senal_filtrada, ...
-    'MinPeakDistance', round(0.5*fs), ...
-    'MinPeakHeight', mean(senal_filtrada));
+media = mean(ppg2);
+    sigma = std(ppg2);
+    
+    umbral = media + 0.8*sigma;
+    umbral_v = media - 0.8*sigma;
+    
+    peaks = [];
+    locs_p = [];
+    valleys = [];
+    locs_v = [];
+    
+    for k = 2:length(ppg2)-1
+        
+        if ppg2(k) > ppg2(k-1) && ppg2(k) > ppg2(k+1) && ppg2(k) > umbral
+            peaks(end+1) = ppg2(k);
+            locs_p(end+1) = k;
+        end
+        
+        if ppg2(k) < ppg2(k-1) && ppg2(k) < ppg2(k+1) && ppg2(k) < umbral_v
+            valleys(end+1) = ppg2(k);
+            locs_v(end+1) = k;
+        end
+    end
 ```
 
 4. **Cálculo del SPI**
