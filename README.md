@@ -105,7 +105,7 @@ A su vez se espera obtener y visualizar la evolución del SPI en función del ti
 
 ## RESULTADOS  COMPLETAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
 
-###  Adquisición de señal   REVISSSSSAAAR
+###  Adquisición de señal REVISAR
 
 - Sensor óptico de reflectancia (MAX30102)
 - ESP32 como sistema de adquisición
@@ -114,21 +114,48 @@ A su vez se espera obtener y visualizar la evolución del SPI en función del ti
  
 
 ```matlab
-puerto = "COM3";
-arduino = serialport(puerto, 9600);
+#include <Wire.h>
+#include "MAX30105.h"
 
-tiempo_total = 120;
-fs = 50;
-dt = 1/fs;
-N = tiempo_total * fs;
+MAX30105 sensor;
 
-senal = zeros(1, N);
+long irValue;
+float dc = 0;
 
-for i = 1:N
-    dato = readline(arduino);
-    senal(i) = str2double(dato);
-    pause(dt);
-end
+void setup() {
+  Serial.begin(115200);
+  Wire.begin();
+
+  if (!sensor.begin(Wire, I2C_SPEED_FAST)) {
+    Serial.println("MAX30102 no encontrado");
+    while (1);
+  }
+
+  sensor.setup(
+    50,    // brillo LED (30–60)
+    4,     // promedio
+    2,     // modo (Red + IR)
+    100,   // sample rate
+    411,   // pulse width
+    4096   // rango ADC
+  );
+
+  Serial.println("Sensor listo");
+}
+
+void loop() {
+
+  irValue = sensor.getIR();
+
+  dc = 0.95 * dc + 0.05 * irValue;
+  float ac = irValue - dc;
+
+  float signal = -ac; 
+
+  Serial.println(signal);
+
+  delay(10); 
+}
 ```
 ---
 
