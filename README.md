@@ -388,11 +388,27 @@ sistema desarrollado para cuantificar el dolor que percibe una persona.
 
 • ¿Cómo se relacionan las variaciones del volumen sanguíneo
 periférico con el balance autonómico?
+
 • ¿Cómo se compara el SPI con otros índices comúnmente
 empleados en cirugía, como el índice nocicepción-analgesia (ANI) y el
 índice de perfusión?
 
+El volumen sanguíneo periférico está directamente regulado por el equilibrio entre el sistema simpático y el parasimpático, el sistema simpático está directamente relacionado con el estrés y dolor y este predomina en la vasoconstricción periférica cuando baja el volumen sanguíneo en la piel y la amplitud de la señal pletismográfica, mientras que la fracuancia cardíaca aumenta. Por otra parte el sistema parasimpático realacionado con el reposo y la analgesia muestra su predominio en la vasodilatación cuandoel volumen   sanguíneo periférico aumenta, así como la amplitud, mientras que la frecuencia cardíaca baja.
+
+Los índices SPI, ANI e Índice de perfusión permiten evaluar el dolor, estres y balance autonómico. El SPI está basado en la amplitud pletismográfica que es el volumen periférico como es mensionado antes, a su vez, se basa en el intervalo de pulso y frecuencia cardíaca y refleja la respuesta simpática al dolor, tiene una escala de 0 a 100, entre más SPI hay, significa más dolor o estrés, este es muy utilizado en anestesia general.
+
+La ANI (Analgesia Nociception Index) esta basada en la variabilidad de la frecuencia cardíaca (HRV), específicamente en la modulación parasimpática, este también va de 0 a 100, sin embargo en este la subida del ANI significa buena analgesia.
+
+Finalmente el Índice de perfusión (PI) es derivado del pulsioxímetro, mide la relación entre flujo pulsátil y flujo no pulsátil. Este refleja perfusión periférica y no es tan específico del dolor.
+
+Todos estos se relacionan en cuanto a que el SPI detecta activación simpática, por ejemplo dolor, ANI detecta la supresión parasimpática y PI refleja una consecuencia vascular ya sea vasoconstricción y/o dilatación. Es decir que estos índices miden el efecto del dolor sobre el sistema autónomo pero cada con sus leves diferencuias en sus bases.
+
+
 ## CONCLUSIONES
+
+En esta práctica se logró captar y analizar la señal PPG, evidenciando correctamente las variaciones del volumen sanguíneo y su respuesta ante estímulos como el estrés con cold pressor test (frío). Aunque no se consiguió calcular el SPI en tiempo real, sí se cumplieron los objetivos principales relacionados con la adquisición y procesamiento de la señal.
+En la vida real, este tipo de sistemas es muy útil porque permite monitorear de forma no invasiva el estado fisiológico de una persona, lo que puede ayudar a mejorar la evaluación del dolor y la toma de decisiones médicas, incluso en entornos fuera del hospital.
+
 
 ## Referencias
 
