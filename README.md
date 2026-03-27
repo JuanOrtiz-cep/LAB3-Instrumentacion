@@ -89,6 +89,20 @@ Circuito resultante con el uso del MAX30102.
 
 Se diseñó un código en MATLAB que captura la señal con el propósito de calcular el SPI de cada pulsación. Posteriormente se realiza la captura de 2 minutos mientras se utiliza la maniobra CPT. Paralelamente un integrante tomó los datos visualizados durante el uso de la maniobra.
 
+
+###  Protocolo experimental (CPT)
+
+| Fase            | Tiempo        | Descripción                  |
+|-----------------|-------------|-----------------------------|
+| Reposo inicial  | 0 – 40 s    | Condición basal             |
+| CPT             | 40 – 80 s   | Estímulo frío               |
+| Recuperación    | 80 – 120 s  | Retorno a estado basal      |
+
+
+<img width="1148" height="1351" alt="image" src="https://github.com/user-attachments/assets/c29cedf3-9070-49d7-9453-e5d241199864" />
+
+A su vez se espera obtener y visualizar la evolución del SPI en función del tiempo.
+
 ```matlab
 clear; clc; close all;
 
@@ -245,20 +259,6 @@ end
 
 disp("Captura finalizada");
 ```
-
-###  Protocolo experimental (CPT)
-
-| Fase            | Tiempo        | Descripción                  |
-|-----------------|-------------|-----------------------------|
-| Reposo inicial  | 0 – 40 s    | Condición basal             |
-| CPT             | 40 – 80 s   | Estímulo frío               |
-| Recuperación    | 80 – 120 s  | Retorno a estado basal      |
-
-
-<img width="1148" height="1351" alt="image" src="https://github.com/user-attachments/assets/c29cedf3-9070-49d7-9453-e5d241199864" />
-
-A su vez se espera obtener y visualizar la evolución del SPI en función del tiempo.
-
 
 ## RESULTADOS  COMPLETAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
 
