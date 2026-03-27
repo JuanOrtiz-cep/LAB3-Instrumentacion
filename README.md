@@ -74,8 +74,8 @@ Esta prueba induce la activación del sistema nervioso simpático, el incremento
 
 ##  Procedimiento 
 
-1. Se buscó realizar en proto-board el circuito de la siguiente figura:
-2. 
+ Se buscó inicialmente realizar en proto-board el circuito de la siguiente figura:
+ 
    <img width="456" height="256" alt="image" src="https://github.com/user-attachments/assets/0cda07be-5403-4c85-b6ce-f337ccd13114" />
 
 La cual es extraida de la guía de laboratorio (Figura 1. Circuito para capturar las variaciones del volumen sanguíneo periférico).
