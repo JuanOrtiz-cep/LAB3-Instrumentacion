@@ -72,7 +72,7 @@ Esta prueba induce la activación del sistema nervioso simpático, el incremento
 
 ---
 
-##  Procedimiento 
+##  Procedimiento y análisis
 
  Se buscó inicialmente realizar en proto-board el circuito de la siguiente figura:
  
@@ -429,21 +429,6 @@ end
 
 ---
 
-
-##  ANÁLISIS 
-
-2. Contrastar el funcionamiento del sistema desarrollado con lo que hace un
-monitor de signos vitales comercial.
-
-4. Obtener cuantitativamente el índice pletismográfico quirúrgico (SPI).
-5. Plantear hipótesis o explicaciones posibles de los resultados obtenidos desde
-la fisiología.
-
-• 1. Compare los valores del SPI obtenidos durante la práctica con
-los que frecuentemente se observan durante una cirugía para proporcionar
-el nivel óptimo de anestesia.
-# 2. Evalúe el alcance y las posibles limitaciones de emplear el
-sistema desarrollado para cuantificar el dolor que percibe una persona.
 
 
 ## PREGUNTAS PARA LA DISCUSIÓN
