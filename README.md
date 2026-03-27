@@ -429,6 +429,11 @@ end
 
 ---
 
+El sistema desarrollado funciona de manera similar a un monitor de signos vitales comercial, ya que ambos capturan señales fisiológicas y las procesan para obtener información como los latidos o índices relacionados. En este caso, se utiliza la señal PPG para detectar picos, calcular intervalos entre latidos y obtener el SPI, lo cual es comparable a cómo los equipos comerciales calculan la frecuencia cardíaca u otros parámetros.
+
+Sin embargo, los monitores comerciales son mucho más precisos y robustos, ya que cuentan con mejores sensores y algoritmos más avanzados que reducen el ruido y los errores. En cambio, el sistema implementado es más sensible a artefactos y variaciones en la señal, lo que puede afectar los resultados.
+
+Aun así, el sistema cumple bien su objetivo, ya que permite entender cómo funcionan estos dispositivos a nivel básico y cómo se procesan las señales biomédicas en tiempo real.
 
 
 ## PREGUNTAS PARA LA DISCUSIÓN
