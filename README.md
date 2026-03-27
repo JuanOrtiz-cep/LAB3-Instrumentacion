@@ -8,20 +8,23 @@
 
 ##  Descripción
 
-Este proyecto presenta el desarrollo de un sistema para la adquisición y procesamiento de señales de **fotopletismografía (PPG)**, con el objetivo de analizar variaciones del volumen sanguíneo periférico y calcular el **Índice Pletismográfico Quirúrgico (SPI)**.
+Este proyecto presenta el desarrollo de un sistema para la adquisición y procesamiento de señales de fotopletismografía (PPG), con el objetivo de analizar variaciones del volumen sanguíneo periférico y calcular el Índice Pletismográfico Quirúrgico (SPI).
 
-El análisis se realiza bajo condiciones de reposo y durante la aplicación del **Cold Pressor Test (CPT)**, permitiendo observar la respuesta fisiológica del sistema cardiovascular.
+El análisis se realiza bajo condiciones de reposo y durante la aplicación del Cold Pressor Test (CPT), permitiendo observar la respuesta fisiológica del sistema cardiovascular, así como se reslta la importancia de la extracción y cálculo de ciertas características de la onda para estimar el balance nocicepción-analgesia.
 
 ---
 
 ##  Objetivos
 
-- Adquirir señales PPG mediante sensor óptico
-- Filtrar y procesar la señal
-- Detectar latidos cardíacos
-- Calcular el índice SPI
-- Analizar cambios fisiológicos durante el CPT
-- Documentar el proceso en GitHub
+Objetivo General: Desarrollar un sistema de medición continua del índice
+pletismográfico quirúrgico (SPI) en condiciones ambulatorias.
+Objetivos Específicos
+• Reconocer las características fundamentales de la onda de pulso a partir de
+las cuales se obtiene el SPI.
+• Construir un sistema que calcule el SPI en tiempo real y bajo condiciones
+ambulatorias.
+• Validar el funcionamiento del sistema desarrollado mediante un método que
+induzca una respuesta fisiológica similar a la que produce el dolor agudo.
 
 ---
 ##  Marco Teórico
@@ -32,8 +35,8 @@ La fotopletismografía (PPG) es una técnica óptica no invasiva utilizada para 
 
 La señal PPG está compuesta por dos componentes principales:
 
-- **Componente DC:** asociada a tejidos, sangre no pulsátil y absorción constante.
-- **Componente AC:** relacionada con la variación pulsátil del volumen sanguíneo.
+- Componente DC:asociada a tejidos, sangre no pulsátil y absorción constante.
+- Componente AC:relacionada con la variación pulsátil del volumen sanguíneo.
 
 Esta técnica es ampliamente utilizada en dispositivos biomédicos como oxímetros de pulso y sistemas de monitoreo cardiovascular.
 
@@ -51,14 +54,7 @@ El SPI se basa en la relación entre la amplitud pulsátil (componente AC) y el 
 
 El Cold Pressor Test (CPT) es una prueba fisiológica utilizada para evaluar la respuesta del sistema nervioso autónomo ante un estímulo de estrés. Consiste en la inmersión de una extremidad (generalmente la mano) en agua fría (0–5 °C) durante un tiempo determinado.
 
-Esta prueba induce:
-
-- Activación del sistema nervioso simpático
-- Incremento de la presión arterial
-- Vasoconstricción periférica
-- Cambios en señales fisiológicas como la PPG
-
-El CPT es ampliamente utilizado en investigación cardiovascular y estudios de regulación autonómica.
+Esta prueba induce la activación del sistema nervioso simpático, el incremento de la presión arterial, la vasoconstricción periférica y por ende permite notar los cambios en señales fisiológicas como la PPG. El CPT es ampliamente utilizado en investigación cardiovascular y estudios de regulación autonómica.
 
 ---
 
@@ -151,7 +147,7 @@ end
 
 ---
 
-##  Resultados
+##  Análisis de Resultados
 
 ###  Señal PPG (Original vs Filtrada)
 
@@ -162,14 +158,14 @@ el nivel óptimo de anestesia.
 sistema desarrollado para cuantificar el dolor que percibe una persona.
 
 
-## Conclusiones
+## Preguntas de discusión
 
 • ¿Cómo se relacionan las variaciones del volumen sanguíneo
 periférico con el balance autonómico?
 • ¿Cómo se compara el SPI con otros índices comúnmente
 empleados en cirugía, como el índice nocicepción-analgesia (ANI) y el
 índice de perfusión?
-
+## Conslusión 
 
 ## Referencias
 
