@@ -374,7 +374,7 @@ end
 ---
 
 
-##  ANÁLISIS COMPLETAAAAAAR
+##  ANÁLISIS 
 
 2. Contrastar el funcionamiento del sistema desarrollado con lo que hace un
 monitor de signos vitales comercial.
