@@ -1,4 +1,4 @@
-# LAB3-Instrumentacion
+# LAB3-Instrumentación
 # Cálculo ambulatorio del índice pletismográfico quirúrgico (SPI)
 
 
@@ -6,7 +6,7 @@
 
 
 
-##  Descripción
+##  DESCRIPCIÓN
 
 Este proyecto presenta el desarrollo de un sistema para la adquisición y procesamiento de señales de fotopletismografía (PPG), con el objetivo de analizar variaciones del volumen sanguíneo periférico y calcular el Índice Pletismográfico Quirúrgico (SPI).
 
@@ -14,20 +14,24 @@ El análisis se realiza bajo condiciones de reposo y durante la aplicación del 
 
 ---
 
-##  Objetivos
+##  OBJETIVOS
 
 Objetivo General: Desarrollar un sistema de medición continua del índice
 pletismográfico quirúrgico (SPI) en condiciones ambulatorias.
+
 Objetivos Específicos
+
 • Reconocer las características fundamentales de la onda de pulso a partir de
 las cuales se obtiene el SPI.
+
 • Construir un sistema que calcule el SPI en tiempo real y bajo condiciones
 ambulatorias.
+
 • Validar el funcionamiento del sistema desarrollado mediante un método que
 induzca una respuesta fisiológica similar a la que produce el dolor agudo.
 
 ---
-##  Marco Teórico
+##  MARCO TEÓRICO
 
 ###  Fotopletismografía (PPG)
 
@@ -35,8 +39,8 @@ La fotopletismografía (PPG) es una técnica óptica no invasiva utilizada para 
 
 La señal PPG está compuesta por dos componentes principales:
 
-- Componente DC:asociada a tejidos, sangre no pulsátil y absorción constante.
-- Componente AC:relacionada con la variación pulsátil del volumen sanguíneo.
+- Componente DC: asociada a tejidos, sangre no pulsátil y absorción constante.
+- Componente AC: relacionada con la variación pulsátil del volumen sanguíneo.
 
 Esta técnica es ampliamente utilizada en dispositivos biomédicos como oxímetros de pulso y sistemas de monitoreo cardiovascular.
 
@@ -48,6 +52,8 @@ El Índice Pletismográfico Quirúrgico (SPI) es un parámetro derivado de la se
 
 El SPI se basa en la relación entre la amplitud pulsátil (componente AC) y el nivel basal de la señal (componente DC), lo que permite inferir cambios en la vasoconstricción periférica. Durante estados de activación simpática, como el dolor o el estrés, se produce una disminución en la amplitud de la señal PPG debido a la vasoconstricción.
 
+Este se calcula de la forma  SPI= 100 - (0.33 X PPGAnorm + 0.67 X HBInorm), en donde PPGAnorm es la amplitud normalizada del pulso y HBInorm es el intervalo entre latidos normalizado.
+
 ---
 
 ###  Cold Pressor Test (CPT)
@@ -58,14 +64,46 @@ Esta prueba induce la activación del sistema nervioso simpático, el incremento
 
 ---
 
-##  Metodología
+##  Procedimiento 
 
-###  Adquisición de señal
+1. Se buscó realizar en proto-board el circuito de la siguiente figura:
+2. 
+   <img width="456" height="256" alt="image" src="https://github.com/user-attachments/assets/0cda07be-5403-4c85-b6ce-f337ccd13114" />
+
+La cual es extraida de la guía de laboratorio (Figura 1. Circuito para capturar las variaciones del volumen sanguíneo periférico).
+De este modo utilizando un acoplador óptico modificado se pretendía convertir en yn sensor de reflectacia, sin embargo en la continuidad de la práctica se realizó un cambio para utilizar únicamente el sensor óptico MAX30102, esto para garantizar mejores resultados ya que del modo anterior no eran nada óptimos.
+
+<img width="873" height="1280" alt="image" src="https://github.com/user-attachments/assets/3e1bb678-2ec0-4b4f-abdd-7dd0d973245a" />
+
+Circuito resultante con el uso del MAX30102.
+
+## Código REVISAAAAAAAAAAAAAR
+
+Se diseñó un código en MATLAB que captura la señal con el propósito de calcular el SPI de cada pulsación. Posteriormente se realiza la captura de 2 minutos mientras se utiliza la maniobra CPT. Paralelamente un integrante tomó los datos visualizados durante el uso de la maniobra.
+
+###  Protocolo experimental (CPT)
+
+| Fase            | Tiempo        | Descripción                  |
+|-----------------|-------------|-----------------------------|
+| Reposo inicial  | 0 – 40 s    | Condición basal             |
+| CPT             | 40 – 80 s   | Estímulo frío               |
+| Recuperación    | 80 – 120 s  | Retorno a estado basal      |
+
+
+<img width="1148" height="1351" alt="image" src="https://github.com/user-attachments/assets/c29cedf3-9070-49d7-9453-e5d241199864" />
+
+A su vez se espera obtener y visualizar la evolución del SPI en función del tiempo.
+
+
+## RESULTADOS  COMPLETAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+
+###  Adquisición de señal   REVISSSSSAAAR
 
 - Sensor óptico de reflectancia (MAX30102)
-- Arduino como sistema de adquisición
+- ESP32 como sistema de adquisición
 - Comunicación serial con MATLAB
 - Circuito
+  
   <img width="570" height="306" alt="image" src="https://github.com/user-attachments/assets/9a62d22b-2cbc-48d0-b756-7e689326cc5a" />
 
 ```matlab
@@ -135,19 +173,19 @@ end
 ```
 ---
 
-###  Protocolo experimental (CPT)
-
-| Fase            | Tiempo        | Descripción                  |
-|-----------------|-------------|-----------------------------|
-| Reposo inicial  | 0 – 40 s    | Condición basal             |
-| CPT             | 40 – 80 s   | Estímulo frío               |
-| Recuperación    | 80 – 120 s  | Retorno a estado basal      |
-
-
 
 ---
 
-##  Análisis de Resultados
+##  ANÁLISIS COMPLETAAAAAAR
+
+2. Contrastar el funcionamiento del sistema desarrollado con lo que hace un
+monitor de signos vitales comercial.
+
+4. Obtener cuantitativamente el índice pletismográfico quirúrgico (SPI).
+5. Plantear hipótesis o explicaciones posibles de los resultados obtenidos desde
+la fisiología.
+
+
 
 ###  Señal PPG (Original vs Filtrada)
 
@@ -158,14 +196,15 @@ el nivel óptimo de anestesia.
 sistema desarrollado para cuantificar el dolor que percibe una persona.
 
 
-## Preguntas de discusión
+## PREGUNTAS PARA LA DISCUSIÓN
 
 • ¿Cómo se relacionan las variaciones del volumen sanguíneo
 periférico con el balance autonómico?
 • ¿Cómo se compara el SPI con otros índices comúnmente
 empleados en cirugía, como el índice nocicepción-analgesia (ANI) y el
 índice de perfusión?
-## Conslusión 
+
+## CONCLUSIONES
 
 ## Referencias
 
