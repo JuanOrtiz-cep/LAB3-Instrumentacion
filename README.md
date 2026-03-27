@@ -260,6 +260,13 @@ end
 disp("Captura finalizada");
 ```
 
+
+El código desarrollado en MATLAB permite la adquisición, procesamiento y visualización en tiempo real de una señal fotopletismográfica (PPG), así como el cálculo del índice SPI a partir de dicha señal. Inicialmente, se configuran los parámetros de comunicación serial, incluyendo el puerto, la velocidad de transmisión y la frecuencia de muestreo. Además, el usuario define el tiempo total de captura y la duración de la ventana visible en la gráfica, lo que permite adaptar la visualización según las necesidades del análisis.
+
+A partir de los picos y valles detectados, se calculan dos parámetros fundamentales: la amplitud del pulso (PPGA), obtenida como la diferencia entre picos y valles consecutivos, y el intervalo entre latidos (HBI), determinado a partir de la distancia temporal entre picos sucesivos. Ambos parámetros son posteriormente normalizados. En el caso de PPGA, se realiza una normalización relativa respecto a su valor medio, mientras que el HBI se normaliza dentro de un rango fisiológico definido entre 0.6 y 1.2 segundos, correspondiente a frecuencias cardíacas típicas. Para evitar valores extremos, ambas variables se limitan dentro de rangos establecidos.
+
+Con estos valores normalizados, se calcula el índice SPI utilizando una combinación ponderada donde el HBI tiene mayor peso que la amplitud del pulso. El resultado se escala a un rango de 0 a 100, permitiendo su interpretación clínica. Finalmente, tanto la señal PPG como el SPI son graficados en tiempo real, incluyendo la visualización de los picos y valles detectados, lo que facilita el análisis visual del comportamiento del sistema.
+
 ## RESULTADOS
 
 <img width="1245" height="846" alt="image" src="https://github.com/user-attachments/assets/a757823e-7142-44f3-bbf9-2bea30e055c6" />
