@@ -347,25 +347,44 @@ senal_filtrada = bandpass(senal, [0.5 5], fs);
 
 4. **Cálculo del SPI**
 
-\[
-SPI = \frac{AC}{DC}
-\]
+Para el calculo del SPI, se realizo teniendo en cuenta la grafica ya prevista anteriormente, calculada mediante dos variables de la señal PPG, esta se muestra en tiempo real mientras se captura la señal para visualizar los cambios que presenta mediante cada pico y valle.
 
-Donde:
 
-- **AC**: amplitud del pulso (pico - valle)  
-- **DC**: valor medio de la señal  
 ```matlab
-SPI = [];
-
-for i = 1:length(locs)-1
-    idx = locs(i):locs(i+1);
-    segmento = senal_filtrada(idx);
-
-    AC = max(segmento) - min(segmento);
-    DC = mean(segmento);
-
-    SPI = [SPI AC/DC];
+if length(locs_p) > 3 && length(locs_v) > 3
+    
+    % PPGA
+    n = min(length(peaks), length(valleys));
+    PPGA = peaks(1:n) - valleys(1:n);
+    
+    % HBI
+    HBI = diff(locs_p)/fs;
+    
+    m = min(length(PPGA)-1, length(HBI));
+    PPGA = PPGA(1:m);
+    HBI = HBI(1:m);
+    
+    %% NORMALIZACIÓN CORRECTA
+    
+    % PPGA (relativa)
+    PPGA_norm = PPGA / mean(PPGA);
+    
+    % HBI (escala fisiológica)
+    HBI_min = 0.6;   % latido rápido
+    HBI_max = 1.2;   % latido lento
+    
+    HBI_norm = (HBI - HBI_min) / (HBI_max - HBI_min);
+    
+    % limitar entre 0 y 1
+    HBI_norm = max(0, min(1, HBI_norm));
+    
+    % también limitar PPGA
+    PPGA_norm = max(0, min(2, PPGA_norm));
+    
+    %% SPI REAL
+    SPI = 100 - (0.33*PPGA_norm + 0.67*HBI_norm)*100;
+    
+    t_spi = locs_p(2:m+1)/fs;
 end
 ```
 ---
