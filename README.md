@@ -260,7 +260,10 @@ end
 disp("Captura finalizada");
 ```
 
-## RESULTADOS  COMPLETAAAAAAAAAAAAAAAAAAAAAAAAAAAAAR
+## RESULTADOS
+
+<img width="1245" height="846" alt="image" src="https://github.com/user-attachments/assets/a757823e-7142-44f3-bbf9-2bea30e055c6" />
+
 
 ###  Adquisición de señal REVISAR
 
@@ -315,6 +318,9 @@ void loop() {
 }
 ```
 ---
+
+<img width="945" height="640" alt="image" src="https://github.com/user-attachments/assets/31295f3a-66f2-4289-bd79-aee9e4619b5f" />
+
 
 ###  Procesamiento de señal en MATLAB
 
