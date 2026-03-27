@@ -320,7 +320,9 @@ void loop() {
 ---
 
 <img width="945" height="640" alt="image" src="https://github.com/user-attachments/assets/31295f3a-66f2-4289-bd79-aee9e4619b5f" />
+Señal cruda, sensor MAX30102 vista en el Serial Plotter de Arduino.
 
+La fuente de nuestro análisis es la toma de la señal de manera correcta, esta fue tomada mediante el codigo anterior en el lenguaje de arduino, comprobamos que la señal fuera correcta en el plotter y es la que observamos en la anterior imagen, esta señal tiene a ser negativa por lo cual la aplicamos en una ventana con dos valores para poderla visualiar y procesar de mejor manera en Matlab.
 
 ###  Procesamiento de señal en MATLAB
 
