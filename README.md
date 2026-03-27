@@ -62,6 +62,14 @@ El Cold Pressor Test (CPT) es una prueba fisiológica utilizada para evaluar la 
 
 Esta prueba induce la activación del sistema nervioso simpático, el incremento de la presión arterial, la vasoconstricción periférica y por ende permite notar los cambios en señales fisiológicas como la PPG. El CPT es ampliamente utilizado en investigación cardiovascular y estudios de regulación autonómica.
 
+###  Protocolo experimental (CPT)
+
+| Fase            | Tiempo        | Descripción                  |
+|-----------------|-------------|-----------------------------|
+| Reposo inicial  | 0 – 40 s    | Condición basal             |
+| CPT             | 40 – 80 s   | Estímulo frío               |
+| Recuperación    | 80 – 120 s  | Retorno a estado basal      |
+
 ---
 
 ##  Procedimiento 
@@ -103,8 +111,7 @@ A su vez se espera obtener y visualizar la evolución del SPI en función del ti
 - ESP32 como sistema de adquisición
 - Comunicación serial con MATLAB
 - Circuito
-  
-  <img width="570" height="306" alt="image" src="https://github.com/user-attachments/assets/9a62d22b-2cbc-48d0-b756-7e689326cc5a" />
+ 
 
 ```matlab
 puerto = "COM3";
@@ -176,6 +183,7 @@ end
 
 ---
 
+
 ##  ANÁLISIS COMPLETAAAAAAR
 
 2. Contrastar el funcionamiento del sistema desarrollado con lo que hace un
@@ -185,14 +193,10 @@ monitor de signos vitales comercial.
 5. Plantear hipótesis o explicaciones posibles de los resultados obtenidos desde
 la fisiología.
 
-
-
-###  Señal PPG (Original vs Filtrada)
-
-## • 1. Compare los valores del SPI obtenidos durante la práctica con
+• 1. Compare los valores del SPI obtenidos durante la práctica con
 los que frecuentemente se observan durante una cirugía para proporcionar
 el nivel óptimo de anestesia.
-## • 2. Evalúe el alcance y las posibles limitaciones de emplear el
+# 2. Evalúe el alcance y las posibles limitaciones de emplear el
 sistema desarrollado para cuantificar el dolor que percibe una persona.
 
 
